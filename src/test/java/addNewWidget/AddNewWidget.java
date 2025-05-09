@@ -1,5 +1,4 @@
 package addNewWidget;
-
 import addNewWidget.Pages.RegistrationPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;

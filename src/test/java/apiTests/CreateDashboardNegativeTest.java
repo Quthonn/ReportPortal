@@ -10,7 +10,6 @@ import io.restassured.RestAssured;
 import java.util.List;
 import static org.hamcrest.Matchers.not;
 
-
 public class CreateDashboardNegativeTest {
 
     String dashboardName = "ADemoTestDashboard1234";
@@ -66,5 +65,4 @@ public class CreateDashboardNegativeTest {
         System.out.println("Все имена Dashboard'ов: " + allDashboardNames);
         assertThat(allDashboardNames, not(hasItem(dashboardName)));
     }
-
 }

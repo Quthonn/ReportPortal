@@ -8,14 +8,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import io.restassured.RestAssured;
 import java.util.List;
+import java.util.Locale;
+
+import com.github.javafaker.Faker;
 
 public class CreateNewDashboard {
-
-    String dashboardName = "ADemoTestDashboard1234";
     private static String TOKEN;
 
     @Test
     public void addNewWidgetAndCheck() {
+        Faker faker = new Faker(new Locale("en"));
+
+        String dashboardName = faker.name().title();
+        System.out.println("Название Dashboard: " + dashboardName);
         RestAssured.baseURI = "https://demo.reportportal.io";
         String body = "{\n" +
                 "  \"name\": \"" + dashboardName + "\",\n" +
