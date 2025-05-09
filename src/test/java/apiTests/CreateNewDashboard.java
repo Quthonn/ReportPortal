@@ -1,17 +1,10 @@
 package apiTests;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.restassured.path.json.JsonPath;
-import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import io.restassured.RestAssured;
-import java.util.List;
 import java.util.Locale;
-import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.is;
-
 import com.github.javafaker.Faker;
 
 public class CreateNewDashboard {
