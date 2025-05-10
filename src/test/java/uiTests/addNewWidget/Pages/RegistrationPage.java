@@ -1,12 +1,13 @@
 package uiTests.addNewWidget.Pages;
-
+import com.github.javafaker.Faker;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
-
+import java.util.Locale;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
+    Faker faker = new Faker(new Locale("en"));
     private SelenideElement
             loginButton = $(".bigButton__color-organish--gj0Mz"),
             dashboardsListClick = $(".sidebar__sidebar-btn--DE02C"),
@@ -15,6 +16,10 @@ public class RegistrationPage {
             selectTypeWidget = $(".widgetTypeItem__widget-type-item--pkO3L"),
             goToStepSelectFilter = $(".wizardControlsSection__buttons-block--HD8zo"),
             selectFilter = $(".inputRadio__input-radio--EMMTx"),
+            addFilterButton = $("button[title='Add filter']"),
+            selectFilterName = $(".input__input--iYEmM"),
+            selectLaunchName = $ (".inputConditional__input--esNOk"),
+            submitClick = $(".bigButton__color-booger--EpRlL"),
             goFinalStep = $$(".wizardControlsSection__button--PtN2R").findBy(text("Next step")),
             widgetName = $(".input__input--iYEmM"),
             createWidgetClick = $(".bigButton__big-button--BmG4Q"),
@@ -64,7 +69,11 @@ public class RegistrationPage {
     }
 
     public RegistrationPage selectFilter() {
-        Allure.step("Выбор фильтра", () -> {
+        Allure.step("Создание фильтра и его выбор фильтра", () -> {
+            $(addFilterButton).click();
+            $(selectFilterName).setValue(faker.name().title());
+            $(selectLaunchName).setValue(faker.name().title());
+            $(submitClick).click();
             $(selectFilter).click();
             $(goFinalStep).click();
         });
@@ -80,5 +89,4 @@ public class RegistrationPage {
         });
         return this;
     }
-
 }
