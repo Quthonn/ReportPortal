@@ -1,5 +1,6 @@
 package apiTests;
 import io.github.cdimascio.dotenv.Dotenv;
+import model.BodyModel;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItem;
@@ -17,18 +18,22 @@ public class CreateNewDashboard {
         String dashboardName = faker.name().title();
         System.out.println("Название Dashboard: " + dashboardName);
         RestAssured.baseURI = "https://demo.reportportal.io";
-        String body = "{\n" +
-                "  \"name\": \"" + dashboardName + "\",\n" +
-                "  \"description\": \"string\"\n" +
-                "}";
+//        String body = "{\n" +
+//                "  \"name\": \"" + dashboardName + "\",\n" +
+//                "  \"description\": \"string\"\n" +
+//                "}";
+        BodyModel bodyModel = new BodyModel();
+        bodyModel.setName(dashboardName);
+        bodyModel.setDescription("String");
 
         Dotenv dotenv = Dotenv.load();
         TOKEN = dotenv.get("TOKEN");
 
         given()
+                .log().all()
                 .header("Authorization", "Bearer " + TOKEN)
                 .contentType("application/json")
-                .body(body)
+                .body(bodyModel)
                 .when()
                 .post("/api/v1/default_personal/dashboard")
                 .then()
@@ -36,6 +41,7 @@ public class CreateNewDashboard {
                 .statusCode(201);
 
         given()
+                .log().all()
                 .header("Authorization", "Bearer " + TOKEN)
                 .contentType("application/json")
                 .when()
