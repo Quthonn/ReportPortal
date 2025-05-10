@@ -69,7 +69,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage selectFilter() {
-        Allure.step("Создание фильтра и его выбор фильтра", () -> {
+        Allure.step("Создание фильтра и его выбор", () -> {
             $(addFilterButton).click();
             $(selectFilterName).setValue(faker.name().title());
             $(selectLaunchName).setValue(faker.name().title());
