@@ -3,6 +3,7 @@ import apiTests.TestBaseAPI;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.qameta.allure.Allure;
 import model.BodyModel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItem;
@@ -14,6 +15,7 @@ public class CreateDashboardNegativeTest extends TestBaseAPI {
     Dotenv dotenv = Dotenv.load();
 
     @Test
+    @DisplayName("Создание Dashboard и проверка его наличия (Negative Test)")
     public void addNewWidgetAndCheck() {
         BodyModel bodyModel = new BodyModel();
         bodyModel.setName(dashboardName);
