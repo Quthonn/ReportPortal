@@ -1,5 +1,5 @@
-package addNewWidget;
-import addNewWidget.Pages.RegistrationPage;
+package uiTests.addNewWidget;
+import uiTests.addNewWidget.Pages.RegistrationPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

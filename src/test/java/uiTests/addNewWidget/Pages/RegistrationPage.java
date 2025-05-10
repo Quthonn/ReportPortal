@@ -1,4 +1,4 @@
-package addNewWidget.Pages;
+package uiTests.addNewWidget.Pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
